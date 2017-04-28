@@ -30,10 +30,11 @@ for i in n:
                 print(spl[0],spl[2],spl[3])
                 percent = int(round((float(spl[2]) / float(spl[3])) * 100))
                 print('percent = '+str(percent)+' %')
-                if percent > 0:
+                if percent > 90:
                     limitinfo = round(((float(spl[2]) / 1024) / 1024), 2)
 #                    print('limitinfo = '+str(limitinfo)+' Gb')
-                    message = "\n Quota for user "+spl[0]+" is "+str(limitinfo)+" Gb ("+str(percent)+" %) and disk limit can be overloaded.\n\n Please contact with Hosting support to increase your limit or clear your backups"
+                    packageinfo = int(round(((float(spl[3]) / 1024) / 1024), 1))
+                    message = "\n Quota for user "+spl[0]+" is "+str(limitinfo)+" Gb ("+str(percent)+" %) and disk limit can be overloaded. The disk qouta of this package is "+str(packageinfo)+" Gb\n\n Please contact with Hosting support to increase your limit or clear your backups"
                     print(message)
 
                     msg = MIMEText(message)
