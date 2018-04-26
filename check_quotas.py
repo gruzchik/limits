@@ -9,7 +9,7 @@ from emailsettings import *
 
 
 PIPE=subprocess.PIPE
-p = subprocess.Popen('repquota  -u /home', shell=True, stdout=PIPE, stderr=subprocess.STDOUT)
+p = subprocess.Popen('repquota  -u /home', shell=True, executable='/bin/bash', stdout=PIPE, stderr=subprocess.STDOUT)
 
 info =  p.stdout.read()
 print info
