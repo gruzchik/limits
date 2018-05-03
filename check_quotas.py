@@ -38,7 +38,7 @@ for i in n:
                     packageinfo = int(round(((float(spl[3]) / 1024) / 1024), 1))
                     quotauser = spl[0]
                     message = "\n Quota for user "+str(quotauser)+" is "+str(limitinfo)+" Gb ("+str(percent)+" %) and disk limit can be overloaded. The disk qouta of this package is "+str(packageinfo)+" Gb\n\n Please contact with Hosting support to increase your limit or clear your backups"
-                    print(message)
+                    print("----------\n"+message+"\n----------\n")
 
                     msg = MIMEText(message)
                     msg['Subject'] = 'Limit for backup user %s in %s' % (spl[0], BKPSERVERNAME)
@@ -59,7 +59,8 @@ for i in n:
                             userspl = line.split("|")
                             user_firstname = userspl[4].strip()
                             userdomain = userspl[2].strip().lower().split(' ')[0]
-                            package_name = userspl[7].strip() 
+                            package_name = userspl[7].strip()
+                            user_email = userspl[3].strip()
                             #print(userdomain.lower(),userspl[3].strip(),userspl[4].strip(),userspl[7].strip())
                             check_quotauser = quotauser.replace("server.","")
                             #print('check user = %s, mcs_user = %s' % (check_quotauser, userdomain))
@@ -75,12 +76,16 @@ for i in n:
                                 messagetext = re.sub('%s','{}',messagetext)
                                 #messageuser = messagetext % (userspl[4].strip(), packageinfo, userspl[7].strip(), userdomain, percent)
                                 messageuser = messagetext.format(user_firstname, packageinfo, package_name, userdomain, percent)
-                                print(messageuser)
+                                print("----------\n"+messageuser+"\n----------\n")
+                                print("email = "+user_email)
                                 msg_user = MIMEText(messageuser)
                                 msg_user['Subject'] = '[{0}] Backup Warning: {1}'.format(MAIL_VALUE2,spl[0])
-                                msg_user['To'] = EMAILTO
+                                #user_email = 'test@test.com'
+                                msg_user['To'] = user_email
+                                msg_user['Bcc'] = EMAILTO
+                                msg_toaddr = [ msg_user['To'], msg_user['Bcc'] ]
                                 s_user = smtplib.SMTP('localhost')
-                                s_user.sendmail(msg['From'], msg_user['To'], msg_user.as_string())
+                                s_user.sendmail(msg['From'], msg_toaddr, msg_user.as_string())
                                 s_user.quit()
                                 messageopen.close()
                                 break
