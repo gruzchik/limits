@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-#import os
+import os
 import subprocess
 import smtplib
 import re
@@ -8,6 +8,7 @@ from email.mime.text import MIMEText
 import emailsettings
 from emailsettings import *
 
+FILEPATH = os.path.dirname(os.path.realpath(__file__))
 
 PIPE=subprocess.PIPE
 p = subprocess.Popen('repquota  -u /home', shell=True, executable='/bin/bash', stdout=PIPE, stderr=subprocess.STDOUT)
@@ -67,9 +68,9 @@ for i in n:
 
                             if check_quotauser == userdomain:
                                 #print("33333333333!!!!!!!!!!!!!!!!!!")
-                                messageopen = open('mail_template.tpl','r').read()
+                                messageopen = open(FILEPATH+'/mail_template.tpl','r').read()
                                 messagetext = messageopen.format(V1 = MAIL_VALUE1, V2 = MAIL_VALUE2, V3 = MAIL_VALUE3, U1 = MAIL_URL1, U2 = MAIL_URL2)
-                                print(messagetext)
+                                #print(messagetext)
                                 #print("4444!!!!!!!!!!!!!!!!!!")
                                 messagetext = re.sub('%s','{}',messagetext)
                                 #messageuser = messagetext % (userspl[4].strip(), packageinfo, userspl[7].strip(), userdomain, percent)
