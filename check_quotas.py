@@ -70,7 +70,7 @@ for i in n:
                             if check_quotauser == userdomain:
                                 #print("33333333333!!!!!!!!!!!!!!!!!!")
                                 messageopen = open(FILEPATH+'/mail_template.tpl','r').read()
-                                messagetext = messageopen.format(V1 = MAIL_VALUE1, V2 = MAIL_VALUE2, V3 = MAIL_VALUE3, U1 = MAIL_URL1, U2 = MAIL_URL2)
+                                messagetext = messageopen.format(V1 = MAIL_VALUE1, V2 = MAIL_VALUE2, V3 = MAIL_VALUE3, U1 = MAIL_URL1, U2 = MAIL_URL2, U3 = MAIL_URL3)
                                 #print(messagetext)
                                 #print("4444!!!!!!!!!!!!!!!!!!")
                                 messagetext = re.sub('%s','{}',messagetext)
