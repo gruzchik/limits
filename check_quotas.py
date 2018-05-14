@@ -85,7 +85,7 @@ for i in n:
                                 print("----------\n"+messageuser+"\n----------\n")
                                 print("email = "+user_email)
                                 msg_user = MIMEText(messageuser)
-                                msg_user['Subject'] = '[{0}] Backup Warning: {1}'.format(MAIL_VALUE2,spl[0])
+                                msg_user['Subject'] = '[{0}] Backup Warning: {1}'.format(MAIL_VALUE3,quotauser)
                                 #user_email = 'test@test.com'
                                 msg_user['To'] = user_email
                                 msg_user['Bcc'] = EMAILTO
