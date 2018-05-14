@@ -4,9 +4,9 @@ Dear %s,
 is currently %s % full. As result backup quota may be overloaded, and
 daily backup of website(s) and database(s) may be incomplete.
 
-Please contact {V2} a.s.a.p. to find the best solution for your hosting plan backup.
+Please contact {V2} a.s.a.p. to find the best option for your hosting plan backup.
 
-{V3} offers the following solutions:
+{V3} offers the following options:
 
 [-] Clear current backup storage and exclude specific data from daily backup, for example images.
 
