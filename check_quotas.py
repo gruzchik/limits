@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 import os
 import subprocess
@@ -14,7 +14,7 @@ PIPE=subprocess.PIPE
 p = subprocess.Popen('repquota  -u /home', shell=True, executable='/bin/bash', stdout=PIPE, stderr=subprocess.STDOUT)
 
 info =  p.stdout.read()
-print info
+print(info)
 
 allstring = info.split('\n')
 n = list(allstring)
